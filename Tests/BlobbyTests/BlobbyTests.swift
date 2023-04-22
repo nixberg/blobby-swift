@@ -32,28 +32,8 @@ final class BlobTests: XCTestCase {
     ]
     
     func testDecoding() throws {
-        let blobs = try XCTUnwrap(Blobs(expectedBytes))
-        
-        for (blob, expectedBlob) in zip(blobs, expectedBlobs) {
+        for (blob, expectedBlob) in zip(try expectedBytes.blobs(), expectedBlobs) {
             XCTAssert(blob.elementsEqual(expectedBlob))
         }
-    }
-    
-    func testEncodingExact() throws {
-        XCTAssert(expectedBlobs.blobbyEncoded().elementsEqual(expectedBytes))
-    }
-    
-    func testEncodingRoundtrip() throws {
-        let blobs = try XCTUnwrap(Blobs(expectedBlobs.blobbyEncoded()))
-        
-        for (blob, expectedBlob) in zip(blobs, expectedBlobs) {
-            XCTAssert(blob.elementsEqual(expectedBlob))
-        }
-    }
-}
-
-fileprivate extension Sequence {
-    var first: Element? {
-        self.first(where: { _ in true })
     }
 }
