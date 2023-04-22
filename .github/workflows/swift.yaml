@@ -2,27 +2,27 @@ name: Swift
 
 on:
   push:
-    branches: [ "main" ]
+    branches: ["main"]
   pull_request:
-    branches: [ "main" ]
+    branches: ["main"]
 
-jobs:   
+jobs:
   build:
     name: Swift ${{ matrix.swift-version }} on ${{ matrix.os }}
-    
+
     strategy:
       matrix:
-        os: [ubuntu-latest]
-        swift-version: ["5.7"]
-    
+        os: [macos-latest, ubuntu-latest]
+        swift-version: ["5"]
+
     runs-on: ${{ matrix.os }}
 
     steps:
-    - uses: swift-actions/setup-swift@v1
-      with:
-        swift-version: ${{ matrix.swift-version }}
-    - uses: actions/checkout@v3
-    - name: Build
-      run: swift build
-    - name: Run tests
-      run: swift test
+      - uses: swift-actions/setup-swift@v1
+        with:
+          swift-version: ${{ matrix.swift-version }}
+      - uses: actions/checkout@v3
+      - name: Build
+        run: swift build
+      - name: Run tests
+        run: swift test
