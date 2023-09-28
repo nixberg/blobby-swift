@@ -14,8 +14,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/nixberg/tuple-sequences-swift",
       "state" : {
-        "revision" : "75a2dbf63969ef8a2ff57a4bddc6b913af952c01",
-        "version" : "1.0.0"
+        "revision" : "437df02bc51c76bdbe400767e24d9ae3bad7207a",
+        "version" : "1.1.0"
       }
     }
   ],
